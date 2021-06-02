@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+</head>
+
+<body>
+    <input type="text" name="" id="myInput" placeholder="name...." onkeyup="searchFun()">
+    <table id="table">
+        <tr>
+            <th style="width: 40%;">
+                Name
+            </th>
+            <th style="width: 30%;">
+                Degree
+            </th>
+            <th style="width: 30%;">
+                Profession
+            </th>
+        </tr>
+
+        <tr>
+            <td>Rohit</td>
+            <td>B.E</td>
+            <td>IT</td>
+        </tr>
+
+        <tr>
+            <td>Ramesh</td>
+            <td>B.E</td>
+            <td>IT</td>
+        </tr>
+
+        <tr>
+            <td>Ram</td>
+            <td>B.E</td>
+            <td>IT</td>
+        </tr>
+
+        <tr>
+            <td>Birla</td>
+            <td>B.E</td>
+            <td>IT</td>
+        </tr>
+
+        <tr>
+            <td>Yash</td>
+            <td>B.E</td>
+            <td>IT</td>
+        </tr>
+
+        <tr>
+            <td>mihir</td>
+            <td>B.E</td>
+            <td>IT</td>
+        </tr>
+        <tr>
+            <td>Raj</td>
+            <td>B.E</td>
+            <td>IT</td>
+        </tr>
+        <tr>
+            <td>Yo</td>
+            <td>B.E</td>
+            <td>IT</td>
+        </tr>
+    </table>
+
+    <script>
+        function searchFun(){
+
+            /* Putting value in search bar and converting it in upper case so that each and every element is found easily.the data entered will also be in uppercase as well
+            
+            */
+
+            let filter = document.getElementById("myInput").value.toUpperCase();
+
+
+            /*  Now the second letiable is for the purpose of entering  in the table.not only a single table but Through this i can search entire website.
+            */
+
+           let mytable = document.getElementById("table");
+            /*
+            now the third letiable is for the purpose of getting inside the row.
+            */
+
+
+            let tr = mytable.getElementsByTagName("tr");
+
+            for (var i = 0; i < tr.length; i++)
+            /*
+            Till now i have passed the table as well as the table rows inside the letiable but now i need to search table data(name)
+            */ {
+                let td = tr[i].getElementsByTagName("td")[0];
+                /*
+            Here the [0] refers to the first column of the table. and tr[i] refers to the row number.
+            */
+
+                if (td) {
+                    let textvalue = td.textContent || td.innerHTML;
+                    /*
+             Through this i m getting only the text content instead of field.
+             */
+
+
+                    if (textvalue.toUpperCase().indexOf(filter) > -1) {
+                        /*
+                        indexof=we get a postive value if the search matches otherwise negative value. It is used for matching the search with the text data
+                        */
+                        tr[i].style.display="";
+                    }
+
+                    else {
+                        tr[i].style.display = "none";
+                    }
+
+                }
+
+
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
